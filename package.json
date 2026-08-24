@@ -1,0 +1,32 @@
+{
+  "name": "myagent",
+  "version": "1.0.0",
+  "description": "Test agent for exploring Mastra",
+  "type": "module",
+  "scripts": {
+    "dev": "mastra dev",
+    "build": "mastra build",
+    "typecheck": "tsc --noEmit",
+    "check": "node src/check.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iozeey2/MyAgent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iozeey2/MyAgent/issues"
+  },
+  "homepage": "https://github.com/iozeey2/MyAgent#readme",
+  "dependencies": {
+    "@mastra/core": "^1.61.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "mastra": "^1.26.0",
+    "typescript": "^6.0.3"
+  }
+}
