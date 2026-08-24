@@ -1,6 +1,12 @@
 import { Mastra } from '@mastra/core/mastra';
 import { Agent } from '@mastra/core/agent';
 import { createTool } from '@mastra/core/tools';
+import {
+  Observability,
+  MastraStorageExporter,
+  MastraPlatformExporter,
+  SensitiveDataFilter,
+} from '@mastra/observability';
 import { z } from 'zod';
 
 export const rollDice = createTool({
@@ -28,4 +34,14 @@ export const testAgent = new Agent({
 
 export const mastra = new Mastra({
   agents: { testAgent },
+  // MastraPlatformExporter self-disables without MASTRA_PLATFORM_ACCESS_TOKEN.
+  observability: new Observability({
+    configs: {
+      default: {
+        serviceName: 'mastra',
+        exporters: [new MastraStorageExporter(), new MastraPlatformExporter()],
+        spanOutputProcessors: [new SensitiveDataFilter()],
+      },
+    },
+  }),
 });
